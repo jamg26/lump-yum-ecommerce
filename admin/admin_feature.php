@@ -162,12 +162,12 @@
 							<tr/>';
 							?>
                         <tr>
-                            <td><input type="text" name="product_name" id="phonenumber" onkeyup="checkname();"
-                                    autocomplete="off" placeholder="Product Name" style="width:250px;" required>
+                            <td><input type="text" name="product_name" placeholder="Product Name" style="width:250px;"
+                                    required>
                                 <br /></td>
 
 
-                            <tr />
+                        </tr>
                         <tr>
                             <td><input type="text" name="product_price" placeholder="Price" style="width:250px;"
                                     required></td>
@@ -178,7 +178,8 @@
                         </tr>
                         <tr>
                             <td>
-                                <textarea name="desc" placeholder="Description"></textarea>
+                                <textarea name="desc" placeholder="Description" id="phonenumber" onkeyup="checkname();"
+                                    autocomplete="off" required="required"></textarea>
                             </td>
                         </tr>
                         <tr>

@@ -5,7 +5,7 @@ if(isset($_POST['user_name']))
 {
  $name=$_POST['user_name'];
 
- $checkdata="SELECT product_name FROM product WHERE product_name='$name' and category='feature';";
+ $checkdata="SELECT Description FROM product WHERE Description='$name' and category='feature';";
 
  $query=mysqli_query($conn,$checkdata);
 

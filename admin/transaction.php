@@ -271,7 +271,7 @@
 						$ottype = $fetch['order_type'];
 						
 						$name = $fetch['firstname'].' '.$fetch['lastname'];
-						    $orderdate  = date("F d, Y", strtotime($o_date));
+						    $orderdate  = date("M d, Y h:i A", strtotime($o_date));
 				?>
                     <tr id="gagmayay" style="font-size:15 px; color:#000;">
                         <td><?php echo $counter++; ?></td>

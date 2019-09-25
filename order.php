@@ -1,5 +1,6 @@
 <?php 
 session_start();
+	include("function/loginorder.php");
 	include("function/login.php");
 	include("function/customer_signup.php");
 
@@ -167,8 +168,38 @@ session_start();
     </div>
 
 
-
-    <div id="login" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    <?php 
+				error_reporting(0);
+				$query = mysqli_query($conn, "SELECT *FROM product WHERE category='feature' ORDER BY product_id DESC") or die (mysqli_error());
+				
+					while($fetch = mysqli_fetch_array($query))
+						{ 
+                            $pid=$fetch['product_id'];
+                            ?>
+    <div id="myModal<?php echo $pid;?>" class="modal hide fade" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true" style="width:400px;">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h3 id="myModalLabel">Login...</h3>
+        </div>
+        <div class="modal-body">
+            <form method="post">
+                <center>
+                    <input type="email" name="email" placeholder="Email" style="width:250px;">
+                    <input type="password" name="password" placeholder="Password" style="width:250px;">
+                    <input type="hidden" name="orderid" value="<?php echo $pid;?>">
+                </center>
+        </div>
+        <div class="modal-footer">
+            <input class="btn btn-warning" type="submit" name="loginorder" value="Login">
+            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
+            </form>
+        </div>
+    </div>
+    <?php
+    }
+    ?>
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true" style="width:400px;">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
@@ -224,52 +255,9 @@ session_start();
 {
    
 ?>
-        <div id="content">
-            <div id="product" style="position:relative; margin-top:5%;">
+        <?php echo "<script>window.location='home.php'</script>" ?>
 
-                <center>
-                    <h2 id="stylegamaysad"
-                        style="position:relative; margin-top:0%; letter-spacing: 2px; font-size: 50px; color:#000; margin-bottom:5%;">
-                        Featured Items</h2>
-                </center>
-                <br />
-
-                <?php 
-				error_reporting(E_ALL);
-		$query = mysqli_query($conn, "SELECT *FROM product WHERE category='feature' ORDER BY product_id DESC") or die (mysqli_error());
-				
-					while($fetch = mysqli_fetch_array($query))
-						{
-							
-						$pid = $fetch['product_id'];
-						
-						$query1 = mysqli_query($conn, "SELECT * FROM stock WHERE product_id = '$pid'") or die (mysqli_error());
-						$rows = mysqli_fetch_array($query1);
-						
-						$qty = $rows['qty'];
-						if($qty <= 5){
-						
-						}else{
-							echo "<div class='float'>";
-							echo "<center>";
-							echo "<a data-target='#myModal' data-toggle='modal'><img class='img-polaroid' src='photo/".$fetch['product_image']."' height = '300px' width = '300px'></a>";
-							echo '<h2 id="stylegamaysad" style="letter-spacing: 2px; font-size: 50px; color:#fff;">'.$fetch['product_name'].'</h2>';
-							echo "<br />";
-							echo "<p id='stylegamaysad' style='letter-spacing: 2px; font-size: 30px;'><strong>Php ".number_format($fetch['product_price'], 2)."</strong></p>";
-							echo "<br />";
-							echo "<h3 class='text-info' style='position:absolute; margin-top:-90px; text-indent:15px;'> </h3>";
-							echo "</center>";
-							echo "</div>";
-						}
-							
-						}
-			?>
-            </div>
-
-
-
-        </div>
-        <?php 		}if(!isset($_SESSION['id']))
+        <?php 		} if(!isset($_SESSION['id']))
 {
  
 			
@@ -301,14 +289,16 @@ session_start();
 				
 					while($fetch = mysqli_fetch_array($query))
 						{ 
+                            $pid=$fetch['product_id'];
+
 							echo "<div class='float'>";
 							echo "<center>";
-							echo "<a data-target='#myModal' data-toggle='modal'><img class='img-polaroid' src='photo/".$fetch['product_image']."' height = '300px' width = '300px'></a>";
+							echo "<a data-target='#myModal".$pid."' data-toggle='modal'><img class='img-polaroid' src='photo/".$fetch['product_image']."' height = '300px' width = '300px'></a>";
 							echo '<h2 id="stylegamaysad" style="letter-spacing: 2px; font-size: 40px; color:#000;">'.$fetch['product_name'].'</h2>';
 							echo '<p id="" style="font-size: 17px; color:#000;">'.$fetch['Description'].'</p>'; 
 							echo "<p id='stylegamaysad' style='letter-spacing: 2px; font-size: 20px;'><strong>Php ".number_format($fetch['product_price'], 2)."</strong></p>";
 							echo "<br />";
-                            echo '<a href="#myModal" data-toggle="modal" style="padding:10px 10px 10px 10px; letter-spacing: 1px; font-size: 20px; color:#fff; background-color:#b68922; border-radius: 25px; border: 2px solid #e7eb96;" class="button"><span>Order</span></a>';
+                            echo '<a href="#myModal'.$pid.'" data-toggle="modal" style="padding:10px 10px 10px 10px; letter-spacing: 1px; font-size: 20px; color:#fff; background-color:#b68922; border-radius: 25px; border: 2px solid #e7eb96;" class="button"><span>Order</span></a>';
 							
 							echo "<h3 class='text-info' style='position:absolute; margin-top:-90px; text-indent:15px;'> </h3>";
 							echo "</center>";
