@@ -238,10 +238,11 @@
                         <th>No.</th>
                         <th>DATE</th>
                         <th>Customer Name</th>
+                        <th>Product Name</th>
+                        <th>Description</th>
                         <th>Total Amount</th>
                         <th>Quantity</th>
                         <th>Order Status</th>
-                        <th>Order Type</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -252,11 +253,11 @@
 					$from=$_GET['from'];
 					$to=$_GET['to'];
 					
-					$query = mysqli_query($conn, "SELECT * FROM transaction LEFT JOIN customer ON customer.customerid = transaction.customerid LEFT JOIN transaction_detail ON transaction.transaction_id = transaction_detail.transaction_id WHERE order_date >= '$from' AND order_date <= '$to' order by order_stat DESC;") or die(mysqli_error());
+					$query = mysqli_query($conn, "SELECT * FROM transaction LEFT JOIN customer ON customer.customerid = transaction.customerid LEFT JOIN transaction_detail ON transaction.transaction_id = transaction_detail.transaction_id LEFT JOIN product ON transaction_detail.product_id = product.product_id WHERE order_stat='ON HOLD' OR order_stat='Cancelled' OR order_stat='Confirmed' order by order_stat DESC;") or die(mysqli_error());
 					
 					}
 					else {
-					$query = mysqli_query($conn, "SELECT * FROM transaction LEFT JOIN customer ON customer.customerid = transaction.customerid LEFT JOIN transaction_detail ON transaction.transaction_id = transaction_detail.transaction_id WHERE order_stat='ON HOLD' OR order_stat='Cancelled' OR order_stat='Confirmed' order by order_stat DESC;") or die(mysqli_error());
+					$query = mysqli_query($conn, "SELECT * FROM transaction LEFT JOIN customer ON customer.customerid = transaction.customerid LEFT JOIN transaction_detail ON transaction.transaction_id = transaction_detail.transaction_id LEFT JOIN product ON transaction_detail.product_id = product.product_id WHERE order_stat='ON HOLD' OR order_stat='Cancelled' OR order_stat='Confirmed' order by order_stat DESC;") or die(mysqli_error());
 					
 					}
 					$counter=1;
@@ -267,8 +268,10 @@
 						$amnt = $fetch['amount'];
 						$o_stat = $fetch['order_stat'];
 						$o_date = $fetch['order_date'];
-						$ote = $fetch['order_qty'];
-						$ottype = $fetch['order_type'];
+						$ote = $fetch['order_qty']; 
+						$productname = $fetch['product_name']; 
+						$desc = $fetch['Description']; 
+						$ote = $fetch['order_qty']; 
 						
 						$name = $fetch['firstname'].' '.$fetch['lastname'];
 						    $orderdate  = date("M d, Y h:i A", strtotime($o_date));
@@ -277,10 +280,11 @@
                         <td><?php echo $counter++; ?></td>
                         <td><?php echo $orderdate; ?></td>
                         <td><?php echo $name; ?></td>
+                        <td><?php echo $productname; ?></td>
+                        <td><?php echo $desc; ?></td>
                         <td>Php <?php echo number_format($amnt, 2); ?></td>
                         <td><?php echo $ote.'pcs'; ?></td>
                         <td><?php echo $o_stat; ?></td>
-                        <td><?php echo $ottype; ?></td>
                         <td><a href="receipt.php?tid=<?php echo $id; ?>"></a>
                             <?php 
 					if($o_stat == 'Confirmed'){

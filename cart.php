@@ -311,11 +311,6 @@ if (isset($_SESSION['cart']))
 
 
             <div class='pull-right'>
-                <select name="ordertype">
-                    <option value="Order">Order Type</option>
-                    <option value="Order">Order</option>
-                    <option value="Reserved">Reserved</option>
-                </select>
                 <a href='home.php' class='btn btn-warning' style="font-size:20px;">Continue Shopping</a>
                 <?php echo "<button name='pay_now' type='submit' class='btn btn-warning' style='font-size:20px;'>Purchase</button>";
 				include ("function/paypal.php"); 

@@ -3,12 +3,11 @@
 	if (isset($_POST['pay_now'])){
 		$cid = $_SESSION['id'];
 		$total = $_POST['total'];
-		$ordertype = $_POST['ordertype'];
 		
 		include ("random_code.php");
 		$t_id = $r_id;
 		$date = date("Y-m-d h:i a");
-		$que = mysqli_query($conn, "INSERT INTO `transaction` (transaction_id, customerid, amount, order_stat, order_date, order_type) VALUES ('$t_id', '$cid', '$total', 'ON HOLD', '$date', '$ordertype')") or die (mysqli_error());				
+		$que = mysqli_query($conn, "INSERT INTO `transaction` (transaction_id, customerid, amount, order_stat, order_date) VALUES ('$t_id', '$cid', '$total', 'ON HOLD', '$date')") or die (mysqli_error());				
 	
 		$p_id = $_POST['pid'];
 		$oqty = $_POST['qty'];

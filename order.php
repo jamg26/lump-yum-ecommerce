@@ -147,11 +147,11 @@ session_start();
     </div>
 
 
-    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    <div id="login" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true" style="width:400px;">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-            <h3 id="myModalLabel">You must login first before you can take order...</h3>
+            <h3 id="myModalLabel">Login</h3>
         </div>
         <div class="modal-body">
             <form method="post">
@@ -180,7 +180,7 @@ session_start();
         aria-labelledby="myModalLabel" aria-hidden="true" style="width:400px;">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-            <h3 id="myModalLabel">Login...</h3>
+            <h3 id="myModalLabel">You must login first before you can take order...</h3>
         </div>
         <div class="modal-body">
             <form method="post">
