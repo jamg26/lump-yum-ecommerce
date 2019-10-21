@@ -1,5 +1,4 @@
-
-				<?php
+<?php
 		include("../db/dbconn.php");
 	
 						 
@@ -19,7 +18,7 @@ if (mysqli_query($conn, $sql1)) {
 	
 echo ("<script LANGUAGE='JavaScript'>
     window.alert('Save!');
-    window.location.href='admin_icfunds.php?from=".$dates."&to=".$dates."';
+    window.location.href='admin_icfunds.php';
     </script>");
 
 } else {
@@ -32,4 +31,6 @@ echo ("<script LANGUAGE='JavaScript'>
 }
 
 mysqli_close($conn);
+
+    // window.location.href='admin_icfunds.php?from=".$dates."&to=".$dates."';
 ?>

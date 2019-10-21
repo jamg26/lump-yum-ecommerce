@@ -1,12 +1,15 @@
 <?php
 	include("function/session.php");
 	include("db/dbconn.php");
+	include("function/cash.php");
+	include("function/paypal.php");
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>LUMP-YUM</title>
+    <link rel="icon" href="img/logo.jpg" />
     <link rel="stylesheet" type="text/css" href="css/style.css" media="all">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <script src="js/bootstrap.js"></script>
@@ -48,7 +51,7 @@
 
     #stylegamaysad {
         font-family: mythFont;
-        font-weight: bold;
+
     }
 
     #stylesad {
@@ -188,107 +191,38 @@
 
 
 
-
     <br>
     <div id="container">
+        <div class="nav" style="display:none;">
 
-
-
-
-        <div id="content">
-
-            <div id="product" style="position:relative; margin-top:5%;">
-                <center>
-                    <h2 id="stylegamaysad"
-                        style="position:relative; margin-top:0%; letter-spacing: 2px; font-size: 100px; color:#000; margin-bottom:5%;">
-                        My Order</h2>
-                </center>
-
-                <br />
-
-                <div class="alert" style="background-color:#fff;">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr style="font-size:25px; color: black" id="stylegamaysad">
-                                <th>DATE</th>
-                                <th>Total Amount</th>
-                                <th>Quantity</th>
-                                <th>Order Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody style="font-size:18px; color: black" id="stylegamaysad">
-                            <?php 
-				error_reporting(0);
-					$from=$_GET['from'];
-					 $to=$_GET['to'];
-					$counter=1;
-			$query = mysqli_query($conn, "SELECT * FROM transaction LEFT JOIN customer ON customer.customerid = transaction.customerid LEFT JOIN transaction_detail ON transaction.transaction_id = transaction_detail.transaction_id LEFT JOIN product ON transaction_detail.product_id = product.product_id WHERE customer.customerid='1' order by order_stat DESC;") or die(mysqli_error());
-					while($fetch = mysqli_fetch_array($query))
-						{
-						    
-						$id = $fetch['transaction_id'];
-						$amnt = $fetch['amount'];
-						$o_stat = $fetch['order_stat'];
-						$o_date = $fetch['order_date'];
-						$ote = $fetch['order_qty'];
-						$productname = $fetch['product_name']; 
-						$desc = $fetch['Description'];  
-						
-						$name = $fetch['firstname'].' '.$fetch['lastname'];
-						    $orderdate  = date("F d, Y", strtotime($o_date));
-				?>
-                            <tr>
-                                <td><?php echo $orderdate; ?></td>
-                                <td>Php <?php echo number_format($amnt, 2); ?></td>
-                                <td><?php echo $ote.'pcs'; ?></td>
-                                <td><?php echo $o_stat; ?></td>
-                                <td><a href="receipt.php?tid=<?php echo $id; ?>"></a>
-                                    <?php 
-					if($o_stat == 'Confirmed'){
-					
-					}elseif($o_stat == 'Cancelled'){
-					
-					}else{ 
-					echo ' <a class="btn btn-mini btn-danger" href="cancel.php?id='.$id.'">Cancel</a> | <a class="btn btn-mini btn-primary" href="preview.php?id='.$id.'">View</a></td>';
-					}					
-					?>
-                            </tr>
-                            <?php
-					}
-				?>
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
         </div>
-        <br />
-        <br />
-        <div id="footer" style="display:none;">
-            <div class="foot">
-                <label style="font-size:17px;"> Copyright &copy; </label>
-                <p style="font-size:25px;">Alphaware Inc. 2015</p>
-            </div>
+        <?php 
+			if(isset($_GET['id'])){
+			$id = $_GET['id'];
+			$query = mysqli_query($conn, "SELECT * FROM product WHERE product_id = '$id' ");
+			$row = mysqli_fetch_array($query);
+		?>
+        <div style="padding-left:25%; padding-right:25%;">
+            <center>
+                <img class="img-polaroid" style="width:250px; height:200px;"
+                    src="photo/<?php echo $row['product_image']; ?>">
+                <h2 id="stylegamaysad" style="letter-spacing: 2px; font-size: 40px; color:#000;">
+                    <?php echo $row['product_name']?></h2>
+                <p id="" style="font-size: 17px; color:#000;">
+                    <?php echo $row['Description']?>
+                </p>
 
-            <div id="foot">
-                <h4>Links</h4>
-                <ul>
-                    <a href="http://www.facebook.com/alphaware">
-                        <li>Facebook</li>
-                    </a>
-                    <a href="http://www.twitter.com/alphaware">
-                        <li>Twitter</li>
-                    </a>
-                    <a href="http://www.pinterest.com/alphaware">
-                        <li>Pinterest</li>
-                    </a>
-                    <a href="http://www.tumblr.com/alphaware">
-                        <li>Tumblr</li>
-                    </a>
-                </ul>
-            </div>
+                <h3 id='stylegamaysad' style='letter-spacing: 2px; font-size: 20px;'><strong>Php
+                        <?php echo number_format($row['product_price'], 2)?></strong></h3>
+
+            </center>
         </div>
+        <?php }?>
+
+
+
+    </div>
+    </div>
 </body>
 
 </html>

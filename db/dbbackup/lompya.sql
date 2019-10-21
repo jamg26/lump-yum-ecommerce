@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 21, 2019 at 03:18 PM
+-- Generation Time: Oct 10, 2019 at 03:30 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -42,27 +42,6 @@ CREATE TABLE IF NOT EXISTS `admin` (
 
 INSERT INTO `admin` (`adminid`, `username`, `password`) VALUES
 (1, 'admin', 'admin');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `capital`
---
-
-DROP TABLE IF EXISTS `capital`;
-CREATE TABLE IF NOT EXISTS `capital` (
-  `capitalID` int(11) NOT NULL AUTO_INCREMENT,
-  `amount` double(10,2) NOT NULL,
-  `date` varchar(20) NOT NULL,
-  PRIMARY KEY (`capitalID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `capital`
---
-
-INSERT INTO `capital` (`capitalID`, `amount`, `date`) VALUES
-(1, 700.00, '2019-10-21');
 
 -- --------------------------------------------------------
 
@@ -106,50 +85,6 @@ CREATE TABLE IF NOT EXISTS `customer` (
 
 INSERT INTO `customer` (`customerid`, `firstname`, `mi`, `lastname`, `address`, `country`, `zipcode`, `mobile`, `telephone`, `email`, `password`) VALUES
 (1, 'Jojie', 'I', 'Avergonzado', 'Toril, Davao City', 'del sur', '8000', '09105399519', '', 'jie@jie', '123456789');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `expense`
---
-
-DROP TABLE IF EXISTS `expense`;
-CREATE TABLE IF NOT EXISTS `expense` (
-  `expenseID` int(11) NOT NULL AUTO_INCREMENT,
-  `expense_type` varchar(100) NOT NULL,
-  `amount` varchar(20) NOT NULL,
-  `date` varchar(20) NOT NULL,
-  PRIMARY KEY (`expenseID`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `expense`
---
-
-INSERT INTO `expense` (`expenseID`, `expense_type`, `amount`, `date`) VALUES
-(1, 'gg', '250', '2019-10-21');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `operatingfunds`
---
-
-DROP TABLE IF EXISTS `operatingfunds`;
-CREATE TABLE IF NOT EXISTS `operatingfunds` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `amount` varchar(20) NOT NULL,
-  `date` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `operatingfunds`
---
-
-INSERT INTO `operatingfunds` (`id`, `name`, `amount`, `date`) VALUES
-(1, 'Bulad', '250', '2019-10-21');
 
 -- --------------------------------------------------------
 

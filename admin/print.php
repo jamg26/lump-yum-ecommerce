@@ -34,7 +34,7 @@ $pdf = new FPDF('P','mm','A4');
 $pdf->AddPage();
 $pdf->SetLeftMargin(3.81);
 $pdf->SetFont('times','B',10);
-$pdf->Cell(0,10,'MEHDESSERT FINANCIAL REPORT',0,0,"C");
+$pdf->Cell(0,10,'LUMP-YUM FINANCIAL REPORT',0,0,"C");
 $pdf-> SetFont('times','',10);
 
 $pdf->Ln(15);
@@ -42,16 +42,16 @@ $pdf->Cell(0,0,'PROPRIETORS:',0,0,"C");
 
 $pdf->Ln(5);
 $pdf-> SetFont('times','',10);
-$pdf->Cell(0,0,'JOJIE AVERGONZADO',0,0,"C");
+$pdf->Cell(0,0,'JASON B. GALEON',0,0,"C");
 
 $pdf->Ln(5);
-$pdf->Cell(0,0,'KENT CABRERA',0,0,"C");
+$pdf->Cell(0,0,'CHERRY AMOR C. LLAMIDO',0,0,"C");
 
 $pdf->Ln(5);
-$pdf->Cell(0,0,'TRISHA ELLA JOSOL',0,0,"C");
+$pdf->Cell(0,0,'JOMARI F. DELA CRUZ',0,0,"C");
 
 $pdf->Ln(5,0,'',0);
-$pdf->Cell(0,0,'NOREEN DACAY',0,0,"C");
+$pdf->Cell(0,0,'RYAN A. DURAN',0,0,"C");
 
 $pdf->Ln(5);
 $pdf->SetFont('times','B',10);
@@ -210,8 +210,8 @@ $pdf->Ln(10);
 $pdf->Ln(5);
 	$pdf->SetFont('times','',10);
 	$pdf->Cell(25,8,'',0,0);
-	$pdf->Cell(70,8,'TRISHA ELLA JOSOL',0,0,"L");
-	$pdf->Cell(70,8,'NOREEN DACAY',0,0,"L");
+	$pdf->Cell(70,8,'RYAN A. DURAN',0,0,"L");
+	$pdf->Cell(70,8,'JOMARI F. DELA CRUZ',0,0,"L");
 $pdf->Ln(5);
 	$pdf->SetFont('times','',10);
 	$pdf->Cell(25,8,'',0,0);
