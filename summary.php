@@ -221,6 +221,9 @@ $paypal_id='yhannaki@gmail.com'; // Business email ID
                         <h5>Product Name</h5>
                     </th>
                     <th>
+                        <h5>Product Description</h5>
+                    </th>
+                    <th>
                         <h5>Price</h5>
                     </th>
                     <th>
@@ -241,11 +244,13 @@ $paypal_id='yhannaki@gmail.com'; // Business email ID
 		
 		$pname = $row['product_name'];
 		$psize = $row['product_size'];
+		$desk = $row['Description'];
 		$pprice = $row['product_price'];
 		$oqty = $row['order_qty'];
 		
 		echo "<tr>"; 
 		echo "<td>".$pname."</td>";  
+		echo "<td>".$desk."</td>";  
 		echo "<td>Php ".$pprice."</td>";
 		echo "<td>".$oqty."pcs</td>";
 		echo "</tr>";
