@@ -250,7 +250,7 @@ $paypal_id='yhannaki@gmail.com'; // Business email ID
 		
 		echo "<tr>"; 
 		echo "<td>".$pname."</td>";  
-		echo "<td>".$desk."</td>";  
+		echo "<td width='100'>".$desk."</td>";  
 		echo "<td>Php ".$pprice."</td>";
 		echo "<td>".$oqty."pcs</td>";
 		echo "</tr>";
