@@ -199,8 +199,10 @@
         <?php 
 			if(isset($_GET['id'])){
 			$id = $_GET['id'];
+			$pcs = $_GET['pcs'];
 			$query = mysqli_query($conn, "SELECT * FROM product WHERE product_id = '$id' ");
 			$row = mysqli_fetch_array($query);
+            $total=$row['product_price'] * $pcs;
 		?>
         <div style="padding-left:25%; padding-right:25%;">
             <center>
@@ -211,9 +213,12 @@
                 <p id="" style="font-size: 17px; color:#000;">
                     <?php echo $row['Description']?>
                 </p>
+                <p id="" style="font-size: 22px; color:#000;">
+                    <?php echo $pcs.' pcs';?>
+                </p>
 
                 <h3 id='stylegamaysad' style='letter-spacing: 2px; font-size: 20px;'><strong>Php
-                        <?php echo number_format($row['product_price'], 2)?></strong></h3>
+                        <?php echo number_format($total, 2);?></strong></h3>
 
             </center>
         </div>

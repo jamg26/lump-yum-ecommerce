@@ -131,6 +131,7 @@
                 <thead>
                     <tr style="font-size:25px; color:#000;" id='gagmayay'>
                         <th>Item description</th>
+                        <th>Quantity</th>
                         <th>Amount</th>
                         <th>Date</th>
                         <th>Action</th>
@@ -148,6 +149,7 @@
 					while($fetch = mysqli_fetch_array($query))
 						{ 
 						    
+						        $qty = $fetch['quantity']; 
 						        $kanid = $fetch['id']; 
 						        $amount = $fetch['amount'];
 						         $kani = $fetch['date'];
@@ -156,6 +158,9 @@
                     <tr style="font-size:18px; color:#000;" id='gagmayay'>
                         <td>
                             <?php echo $fetch['name'];?>
+                        </td>
+                        <td>
+                            <?php echo $qty;?>
                         </td>
                         <td> Php
                             <?php echo number_format($amount, 2); ?>
@@ -190,6 +195,9 @@
 
                 </tr>
                 <tr>
+                    <input type="text" name="qty" placeholder="Quantity" required />
+                </tr>
+                <tr>
                     <input type="text" name="amount" placeholder="amount" required />
                 </tr>
                 <br>
@@ -219,6 +227,7 @@
 						{ 
 						    
 						        $id = $row['id']; 
+						          $qty = $row['quantity']; 
 						          $name = $row['name']; 
 						         $amount = $row['amount'];   
 						
@@ -232,6 +241,10 @@
                 <label for="">Name</label>
                 <input type="hidden" name="id" value="<?php echo $id ?>" class="form-control" required />
                 <input type="text" value="<?php echo $name ?>" class="form-control" name="name" />
+            </div>
+            <div class="form-group">
+                <label for="">Quantity</label>
+                <input type="text" name="qty" value="<?php echo $qty ?>" class="form-control" />
             </div>
             <div class="form-group">
                 <label for="">Amount</label>

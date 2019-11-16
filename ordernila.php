@@ -227,6 +227,7 @@
 					while($fetch = mysqli_fetch_array($query))
 						{
 						    
+						$pid = $fetch['product_id'];
 						$id = $fetch['transaction_id'];
 						$amnt = $fetch['amount'];
 						$o_stat = $fetch['order_stat'];
@@ -250,7 +251,7 @@
 					}elseif($o_stat == 'Cancelled'){
 					
 					}else{ 
-					echo ' <a class="btn btn-mini btn-danger" href="cancel.php?id='.$id.'">Cancel</a> | <a class="btn btn-mini btn-primary" href="preview.php?id='.$id.'">View</a></td>';
+					echo ' <a class="btn btn-mini btn-danger" href="cancel.php?id='.$id.'">Cancel</a> | <a class="btn btn-mini btn-primary" href="preview.php?id='.$pid.'&pcs='.$ote.'">View</a></td>';
 					}					
 					?>
                             </tr>

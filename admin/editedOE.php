@@ -1,6 +1,4 @@
- 
-
-				<?php
+ <?php
 		include("../db/dbconn.php");
 	
 						
@@ -10,8 +8,9 @@
 					$id = $_POST['id'];
 					$amount = $_POST['amount'];  
 					$name = $_POST['name'];  
+					$qty = $_POST['qty'];  
 				  
-					 	$sql1 ="UPDATE `expense` SET `expense_type`='$name',`amount`='$amount' WHERE expenseID='$id';";
+					 	$sql1 ="UPDATE `expense` SET `expense_type`='$name',`amount`='$amount',`quantity`='$qty' WHERE expenseID='$id';";
 			
 					
 				

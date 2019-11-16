@@ -132,6 +132,7 @@
                 <thead>
                     <tr style="font-size:25px; color:#000" id="gagmayay">
                         <th>Item description</th>
+                        <th>Quantity</th>
                         <th>Amount</th>
                         <th>Date</th>
                         <th>Action</th>
@@ -148,6 +149,7 @@
 					$query = mysqli_query($conn, "SELECT * FROM `expense` ORDER BY date ASC;") or die(mysqli_error());
 					while($fetch = mysqli_fetch_array($query))
 						{ 
+						    $qty = $fetch['quantity'];
 						    $amount = $fetch['amount'];
 						        $kanid = $fetch['expenseID'];
 						         $kani = $fetch['date'];
@@ -155,6 +157,7 @@
 				?>
                     <tr style="font-size:18px; color:#000;" id="gagmayay">
                         <td><?php echo $fetch['expense_type'];?></td>
+                        <td><?php echo $qty;?></td>
                         <td>Php <?php echo number_format($amount, 2); ?></td>
                         <td><?php echo $dates;?></td>
                         <td>
@@ -181,6 +184,10 @@
             <table>
                 <tr>
                     <input type="text" name="expense" placeholder="Item description">
+
+                </tr>
+                <tr>
+                    <input type="text" name="qty" placeholder="Quantity">
 
                 </tr>
                 <tr>
@@ -213,6 +220,7 @@
 					while($row = mysqli_fetch_array($query))
 						{ 
 						    
+						        $qty = $row['quantity']; 
 						        $id = $row['expenseID']; 
 						          $name = $row['expense_type']; 
 						         $amount = $row['amount'];   
@@ -227,6 +235,10 @@
                 <label for="Name" id="gagmayay">Name</label>
                 <input type="hidden" name="id" value="<?php echo $id ?>" class="form-control" required />
                 <input type="text" value="<?php echo $name ?>" class="form-control" name="name" />
+            </div>
+            <div class="form-group">
+                <label for="Amount" id="gagmayay">Quantity</label>
+                <input type="text" name="qty" value="<?php echo $qty ?>" class="form-control" />
             </div>
             <div class="form-group">
                 <label for="Amount" id="gagmayay">Amount</label>
