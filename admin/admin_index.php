@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Meh Dessert</title>
+    <title>LUMP-YUM</title>
     <link rel="icon" href="img/logo.jpg" />
     <link rel="stylesheet" type="text/css" href="../css/style.css" media="all">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
