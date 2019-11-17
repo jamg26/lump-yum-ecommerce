@@ -232,8 +232,8 @@ error_reporting(0);
 						 
 							echo "<tr>";
 							echo "<td> TOTAL OPERATING INCOME </td>";
-								echo "<td></td>"; 
-									echo "<td></td>"; 
+                            echo "<td></td>"; 
+                            echo "<td></td>"; 
 							echo "<td>" .number_format($halin, 2)."</td>"; 
 							echo "</tr>";
 							}
@@ -258,9 +258,7 @@ error_reporting(0);
 							echo "<td>".$tid1."</td>";  
 							echo "<td>".$tid2."</td>"; 
 							echo "<td></td>"; 
-							echo "<td></td>"; 
-							echo "<td></td>"; 
-							echo "<td></td>"; 
+							echo "<td></td>";   
 							echo "</tr>";
 						 
 							}
@@ -276,8 +274,7 @@ error_reporting(0);
 							
 							  echo "<tr>";   
 							echo "<td> Total opearting expense </td>"; 
-							echo "<td></td>"; 
-							echo "<td></td>"; 
+							echo "<td></td>";  
 							echo "<td>".$operatingexp."</td>"; 
 							echo "</tr>";
 							}
