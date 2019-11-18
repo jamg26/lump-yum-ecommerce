@@ -5,13 +5,12 @@
 				if (isset($_POST['addfund']))
 				{
 						
-					$expense = $_POST['funds'];
-					$qty = $_POST['qty'];  
+					$expense = $_POST['funds'];  
 					$amount = $_POST['amount'];  
 					$datenow= date("Y-m-d"); 
 					
-					 	$sql1 ="INSERT INTO operatingfunds (name, quantity,amount,date)
-								VALUES ('$expense', '$qty', '$amount', '$datenow')";
+					 	$sql1 ="INSERT INTO operatingfunds (name, amount,date)
+								VALUES ('$expense', '$amount', '$datenow')";
 			
 					
 					}  

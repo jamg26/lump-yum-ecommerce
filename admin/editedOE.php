@@ -7,10 +7,9 @@
 						
 					$id = $_POST['id'];
 					$amount = $_POST['amount'];  
-					$name = $_POST['name'];  
-					$qty = $_POST['qty'];  
+					$name = $_POST['name'];   
 				  
-					 	$sql1 ="UPDATE `expense` SET `expense_type`='$name',`amount`='$amount',`quantity`='$qty' WHERE expenseID='$id';";
+					 	$sql1 ="UPDATE `expense` SET `expense_type`='$name',`amount`='$amount' WHERE expenseID='$id';";
 			
 					
 				

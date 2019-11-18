@@ -268,6 +268,7 @@
                         <th>Product Name</th>
                         <th>Product Price</th>
                         <th>No. of Stock</th>
+                        <th>Date</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -279,6 +280,7 @@
 						{
 						$id = $fetch['product_id'];
 						$price = $fetch['product_price'];
+						$deyt = $fetch['date_created'];
 				?>
                     <tr class="del<?php echo $id?>" id="stylegamaysad" style="font-size:20px;">
                         <td><img class="img-polaroid" src="../photo/<?php echo $fetch['product_image']?>" height="70px"
@@ -294,6 +296,7 @@
 					?>
 
                         <td><?php echo $fetch1['qty']?></td>
+                        <td><?php echo date("F j, Y ",strtotime($deyt)); ?></td>
                         <td>
                             <?php 
 					echo "<a href='stockin.php?id=".$id."' class='btn btn-warning' rel='facebox'><i class='icon-plus-sign icon-white'></i> Stock In</a> ";
