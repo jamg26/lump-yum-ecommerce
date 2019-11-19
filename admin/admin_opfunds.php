@@ -10,6 +10,7 @@
     <title>LUMP-YUM</title>
     <link rel="stylesheet" type="text/css" href="../css/ataybaya.css" media="all">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+
     <script src="../js/bootstrap.js"></script>
     <script src="../js/jquery-1.7.2.min.js"></script>
     <script src="../js/carousel.js"></script>
@@ -27,12 +28,21 @@
     <script src="../javascripts/filter.js" type="text/javascript" charset="utf-8"></script>
     <script src="../jscript/jquery-1.9.1.js" type="text/javascript"></script>
 
+    <link rel="icon" href="../img/logonadaw.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="../img/logonadaw.png" sizes="16x16" type="image/png">
     <!--Le Facebox-->
     <link href="../facefiles/facebox.css" media="screen" rel="stylesheet" type="text/css" />
     <script src="../facefiles/jquery-1.9.js" type="text/javascript"></script>
     <script src="../facefiles/jquery-1.2.2.pack.js" type="text/javascript"></script>
     <script src="../facefiles/facebox.js" type="text/javascript"></script>
     <script type="text/javascript">
+    function fn_do() {
+        var numb = document.getElementById("int").value;
+        //var numb = 123;
+        var zz = parseFloat(numb) || 0;
+        var zzz = zz.toFixed(2);
+        document.getElementById("int").value = zzz;
+    }
     jQuery(document).ready(function($) {
         $('a[rel*=facebox]').facebox()
     })
@@ -190,7 +200,9 @@
                     <input type="text" name="funds" placeholder="Item description" required />
                 </tr>
                 <tr>
-                    <input type="text" name="amount" placeholder="amount" required />
+                    <input type="number" name="amount" placeholder="Amount" required id="int" onchange="fn_do()" min="0"
+                        max="99999" oninvalid="this.setCustomValidity('This field accept 5 digits only.')"
+                        title="This field accept 5 digits only.">
                 </tr>
                 <br>
                 <br>
@@ -236,7 +248,10 @@
             </div>
             <div class="form-group">
                 <label for="">Amount</label>
-                <input type="text" name="amount" value="<?php echo $amount ?>" class="form-control" />
+                <input type="number" name="amount" value="<?php echo $amount ?>" placeholder="Product Name" required
+                    id="intup" onchange="fnup_do()" min="0" max="99999"
+                    oninvalid="this.setCustomValidity('This field accept 5 digits only.')"
+                    title="This field accept 5 digits only.">
             </div>
             <button type="submit" class="btn btn-warning">Update</button>
         </form>

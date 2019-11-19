@@ -33,6 +33,13 @@
     <script src="../facefiles/jquery-1.2.2.pack.js" type="text/javascript"></script>
     <script src="../facefiles/facebox.js" type="text/javascript"></script>
     <script type="text/javascript">
+    function fn_do() {
+        var numb = document.getElementById("int").value;
+        //var numb = 123;
+        var zz = parseFloat(numb) || 0;
+        var zzz = zz.toFixed(2);
+        document.getElementById("int").value = zzz;
+    }
     jQuery(document).ready(function($) {
         $('a[rel*=facebox]').facebox()
     })
@@ -184,6 +191,9 @@
             <table>
                 <tr>
                     <input type="text" name="amount" placeholder="Amount" required />
+                    <input type="number" name="amount" placeholder="Amount" required id="int" onchange="fn_do()" min="0"
+                        max="99999" oninvalid="this.setCustomValidity('This field accept 5 digits only.')"
+                        title="This field accept 5 digits only.">
                 </tr>
                 <br>
                 <br>

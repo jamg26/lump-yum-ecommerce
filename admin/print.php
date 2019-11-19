@@ -92,7 +92,7 @@ $pdf->Ln(5);
 		$pdf->Cell(35,8,'',0,0);
 		$pdf->Cell(65,8,$r1['name'],0,0,"L");
 		$pdf->Cell(5,8,'P',0,0,"R");
-		$pdf->Cell(20,8,$r1['amount'],0,0,"R");
+		$pdf->Cell(20,8,number_format($r1['amount'], 2),0,0,"R");
 			}
  
 	
@@ -150,7 +150,7 @@ $pdf->Ln(5);
 		$pdf->Cell(35,8,'',0,0);
 		$pdf->Cell(65,8,$r1s['expense_type'],0,0,"L");
 		$pdf->Cell(5,8,'P',0,0,"R");
-		$pdf->Cell(20,8,$r1s['amount'],0,0,"R");
+		$pdf->Cell(20,8,number_format($r1s['amount'], 2),0,0,"R");
 			}
 		  		
 							

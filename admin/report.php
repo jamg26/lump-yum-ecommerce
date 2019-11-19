@@ -196,13 +196,11 @@ error_reporting(0);
 							$tid1 = $r1['name'];
 							$tid2 = $r1['amount'];  
 							 
-							echo "<tr>";
+							echo "<tr>";   
 							echo "<td>".$tid1."</td>";  
-							echo "<td>".$tid2."</td>"; 
+							echo "<td>".number_format($tid2, 2)."</td>"; 
 							echo "<td></td>"; 
-							echo "<td></td>"; 
-							echo "<td></td>"; 
-							echo "<td></td>"; 
+							echo "<td></td>";  
 							echo "</tr>";
 						 
 							}
@@ -215,11 +213,11 @@ error_reporting(0);
 							$operatingfunds = $r1['sum(amount)'];  
 							
 							  
-						    echo "<tr>";   
+						    echo "<tr>";     
 							echo "<td> Total opearting funds </td>"; 
 							echo "<td></td>"; 
 							echo "<td></td>"; 
-							echo "<td>".$operatingfunds."</td>"; 
+							echo "<td>".number_format($operatingfunds, 2)."</td>"; 
 							echo "</tr>";
 							}
 							 
@@ -256,7 +254,7 @@ error_reporting(0);
 							
 							echo "<tr>";
 							echo "<td>".$tid1."</td>";  
-							echo "<td>".$tid2."</td>"; 
+							echo "<td>".number_format($tid2, 2)."</td>"; 
 							echo "<td></td>"; 
 							echo "<td></td>";   
 							echo "</tr>";
@@ -275,7 +273,8 @@ error_reporting(0);
 							  echo "<tr>";   
 							echo "<td> Total opearting expense </td>"; 
 							echo "<td></td>";  
-							echo "<td>".$operatingexp."</td>"; 
+							echo "<td></td>";  
+							echo "<td>".number_format($operatingexp, 2)."</td>"; 
 							echo "</tr>";
 							}
 							 
