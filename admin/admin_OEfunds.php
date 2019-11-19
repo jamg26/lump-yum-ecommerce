@@ -33,6 +33,13 @@
     <script src="../facefiles/jquery-1.2.2.pack.js" type="text/javascript"></script>
     <script src="../facefiles/facebox.js" type="text/javascript"></script>
     <script type="text/javascript">
+    function fn_do() {
+        var numb = document.getElementById("int").value;
+        //var numb = 123;
+        var zz = parseFloat(numb) || 0;
+        var zzz = zz.toFixed(2);
+        document.getElementById("int").value = zzz;
+    }
     jQuery(document).ready(function($) {
         $('a[rel*=facebox]').facebox()
     })
@@ -122,7 +129,7 @@
                 style="position:relative; margin-top:10%; margin-bottom:5%; letter-spacing: 2px; font-size: 100px; color:#000;">
                 Operating Expense</h2>
         </center>
-        <a href="#add" rel="facebox" class='btn btn-primary'>
+        <a href="#add" role="button" data-toggle="modal" class='btn btn-primary'>
             <i class='icon-plus-sign icon-white'></i> Add expense</a>
         <!-- <a href="#sdate" rel="facebox" class='btn btn-success'>Select date</a> -->
 
@@ -175,8 +182,36 @@
             </table>
         </div>
     </div>
+    <div id="add" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+        style="width:400px;">
+        <div class="modal-header" id="stylegamaysad">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h3 id="myModalLabel">Add Product...</h3>
+        </div>
+        <div class="modal-body">
+            <center>
 
-    <div id="add" style="display:none; text-align:center;">
+                <form method="post" action="insertexpense.php">
+                    <table>
+                        <tr>
+                            <input type="text" name="expense" placeholder="Item description">
+
+                        </tr>
+                        <tr>
+                            <input type="number" name="amount" placeholder="Amount" required id="int" onchange="fn_do()"
+                                min="0" max="99999"
+                                oninvalid="this.setCustomValidity('This field accept 5 digits only.')"
+                                title="This field accept 5 digits only.">
+                        </tr>
+                        <br>
+                        <br>
+                        <input type="submit" name="addexp" value="Submit" class="btn btn-success" style="width:200px;">
+                    </table>
+                </form>
+            </center>
+        </div>
+    </div>
+    <!-- <div id="add" style="display:none; text-align:center;">
         <h5></h5>
         <form method="post" action="insertexpense.php">
             <table>
@@ -193,7 +228,7 @@
             </table>
         </form>
 
-    </div>
+    </div> -->
     <div id="sdate" style="display:none; text-align:center;">
         <h5></h5>
         <form action="admin_OEfunds.php">

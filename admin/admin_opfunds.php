@@ -10,7 +10,6 @@
     <title>LUMP-YUM</title>
     <link rel="stylesheet" type="text/css" href="../css/ataybaya.css" media="all">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-
     <script src="../js/bootstrap.js"></script>
     <script src="../js/jquery-1.7.2.min.js"></script>
     <script src="../js/carousel.js"></script>
@@ -28,8 +27,6 @@
     <script src="../javascripts/filter.js" type="text/javascript" charset="utf-8"></script>
     <script src="../jscript/jquery-1.9.1.js" type="text/javascript"></script>
 
-    <link rel="icon" href="../img/logonadaw.png" sizes="16x16" type="image/png">
-    <link rel="icon" href="../img/logonadaw.png" sizes="16x16" type="image/png">
     <!--Le Facebox-->
     <link href="../facefiles/facebox.css" media="screen" rel="stylesheet" type="text/css" />
     <script src="../facefiles/jquery-1.9.js" type="text/javascript"></script>
@@ -43,9 +40,9 @@
         var zzz = zz.toFixed(2);
         document.getElementById("int").value = zzz;
     }
-    jQuery(document).ready(function($) {
+    $(document).ready(function() {
         $('a[rel*=facebox]').facebox()
-    })
+    });
     </script>
     <link rel="icon" href="../img/logonadaw.png" sizes="16x16" type="image/png">
     <style>
@@ -131,8 +128,9 @@
             <h2 id="stylegamaysad"
                 style="position:relative; margin-top:10%; margin-bottom:5%; letter-spacing: 2px; font-size: 100px; color:#000;">
                 Operating Funds</h2>
+
         </center>
-        <a href="#add" rel="facebox" class='btn btn-primary'>
+        <a href="#add" role="button" data-toggle="modal" class='btn btn-primary'>
             <i class='icon-plus-sign icon-white'></i> Add operating funds</a>
         <!-- <a href="#sdate" rel="facebox" class='btn btn-success'>Select date</a> -->
 
@@ -191,25 +189,55 @@
             </table>
         </div>
     </div>
-
-    <div id="add" style="display:none; text-align:center;">
+    <div id="add" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+        style="width:400px;">
+        <div class="modal-header" id="stylegamaysad">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h3 id="myModalLabel">Add Operating Funds</h3>
+        </div>
+        <div class="modal-body">
+            <center>
+                <form method="post" action="operatingfunds.php">
+                    <table>
+                        <tr>
+                            <input type="text" name="funds" placeholder="Item description" required />
+                        </tr>
+                        <tr>
+                            <input type="number" name="amount" placeholder="Amount" required id="int" onchange="fn_do()"
+                                min="0" max="99999"
+                                oninvalid="this.setCustomValidity('This field accept 5 digits only.')"
+                                title="This field accept 5 digits only.">
+                        </tr>
+                        <br>
+                        <br>
+                        <input type="submit" name="addfund" value="Submit" class="btn btn-success" style="width:200px;">
+                    </table>
+                </form>
+            </center>
+        </div>
+    </div>
+    <!-- <div id="add" style="display:none; text-align:center;">
         <h5></h5>
         <form method="post" action="operatingfunds.php">
             <table>
                 <tr>
                     <input type="text" name="funds" placeholder="Item description" required />
                 </tr>
-                <tr>
-                    <input type="number" name="amount" placeholder="Amount" required id="int" onchange="fn_do()" min="0"
-                        max="99999" oninvalid="this.setCustomValidity('This field accept 5 digits only.')"
+                <td>
+                    <input type="number" name="product_name" placeholder="Product Name" style="width:250px;" required
+                        id="int" onchange="fn_do()" min="0" max="99999"
+                        oninvalid="this.setCustomValidity('This field accept 5 digits only.')"
                         title="This field accept 5 digits only.">
+                    <br /></td>
+                <tr>
+                    <input type="text" name="amount" placeholder="amount" required />
                 </tr>
                 <br>
                 <br>
                 <input type="submit" name="addfund" value="Submit" class="btn btn-success" style="width:200px;">
             </table>
         </form>
-    </div>
+    </div> -->
     <div id="sdate" style="display:none; text-align:center;">
         <h5></h5>
         <form action="admin_opfunds.php">
@@ -248,10 +276,7 @@
             </div>
             <div class="form-group">
                 <label for="">Amount</label>
-                <input type="number" name="amount" value="<?php echo $amount ?>" placeholder="Product Name" required
-                    id="intup" onchange="fnup_do()" min="0" max="99999"
-                    oninvalid="this.setCustomValidity('This field accept 5 digits only.')"
-                    title="This field accept 5 digits only.">
+                <input type="text" name="amount" value="<?php echo $amount ?>" class="form-control" />
             </div>
             <button type="submit" class="btn btn-warning">Update</button>
         </form>
