@@ -187,7 +187,7 @@
         style="width:400px;">
         <div class="modal-header" id="stylegamaysad">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-            <h3 id="myModalLabel">Add Operating Funds</h3>
+            <h3 id="myModalLabel">Add Initial Capital</h3>
         </div>
         <div class="modal-body">
             <center>
