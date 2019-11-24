@@ -6,7 +6,7 @@
 		
 		include ("random_code.php");
 		$t_id = $r_id;
-		$date = date("Y-m-d h:i a");
+		$date = date("Y-m-d");
 		$que = mysqli_query($conn, "INSERT INTO `transaction` (transaction_id, customerid, amount, order_stat, order_date) VALUES ('$t_id', '$cid', '$total', 'ON HOLD', '$date')") or die (mysqli_error());				
 	
 		$p_id = $_POST['pid'];
