@@ -170,8 +170,12 @@
 							<tr/>';
 							?>
                         <tr>
+                            <td><input type="text" name="product_name" placeholder="Product Name" style="width:250px;"
+                                    required></td>
+                        </tr>
+                        <tr>
                             <td>
-                                <input type="number" name="product_name" placeholder="Product Name" style="width:250px;"
+                                <input type="number" name="product_price" placeholder="Price" style="width:250px;"
                                     required id="int" onchange="fn_do()" min="0" max="99999"
                                     oninvalid="this.setCustomValidity('This field accept 5 digits only.')"
                                     title="This field accept 5 digits only.">
@@ -179,10 +183,7 @@
 
 
                         </tr>
-                        <tr>
-                            <td><input type="text" name="product_price" placeholder="Price" style="width:250px;"
-                                    required></td>
-                        </tr>
+
                         <tr>
                             <td><input type="number" name="qty" placeholder="No. of Stock" style="width:250px;"
                                     required></td>
