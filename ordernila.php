@@ -211,6 +211,7 @@
                         <thead>
                             <tr style="font-size:25px; color: black" id="stylegamaysad">
                                 <th>DATE</th>
+                                <th>Product Name</th>
                                 <th>Total Amount</th>
                                 <th>Quantity</th>
                                 <th>Order Status</th>
@@ -223,7 +224,7 @@
 					$from=$_GET['from'];
 					 $to=$_GET['to'];
 					$counter=1;
-			$query = mysqli_query($conn, "SELECT * FROM transaction LEFT JOIN customer ON customer.customerid = transaction.customerid LEFT JOIN transaction_detail ON transaction.transaction_id = transaction_detail.transaction_id LEFT JOIN product ON transaction_detail.product_id = product.product_id WHERE customer.customerid='1' order by order_stat DESC;") or die(mysqli_error());
+			$query = mysqli_query($conn, "SELECT * FROM transaction LEFT JOIN customer ON customer.customerid = transaction.customerid LEFT JOIN transaction_detail ON transaction.transaction_id = transaction_detail.transaction_id LEFT JOIN product ON transaction_detail.product_id = product.product_id WHERE customer.customerid='".$_SESSION['id']."' order by order_stat DESC;") or die(mysqli_error());
 					while($fetch = mysqli_fetch_array($query))
 						{
 						    
@@ -241,6 +242,7 @@
 				?>
                             <tr>
                                 <td><?php echo $orderdate; ?></td>
+                                <td><?php echo $productname; ?></td>
                                 <td>Php <?php echo number_format($amnt, 2); ?></td>
                                 <td><?php echo $ote.'pcs'; ?></td>
                                 <td><?php echo $o_stat; ?></td>
